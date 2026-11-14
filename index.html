@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lunar Landing Site Navigator | NASA Space Apps 2026</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Lunar Landing Site Navigator</h1>
+      <p class="subtitle">South Pole Illumination, Solar Power &amp; Direct-to-Earth (DTE) Mission Planner</p>
+    </div>
+    <div class="header-badges">
+      <span id="dataSourceBadge" class="badge badge-info">Loading JPL Horizons Ephemeris...</span>
+      <span class="badge badge-team">Team: Soft Kitty, Warm Kitty</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Global Simulation Controls -->
+    <section class="control-bar card">
+      <div class="playback-controls">
+        <button id="playPauseBtn" class="btn btn-primary">▶ Play Lunar Cycle</button>
+        <label class="inline-label">
+          Speed:
+          <select id="speedSelect">
+            <option value="1">1 hr / tick</option>
+            <option value="6" selected>6 hrs / tick</option>
+            <option value="24">24 hrs / tick</option>
+          </select>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="syncTimeCheck" checked />
+          Sync Dates (Compare Sites at Same Time)
+        </label>
+      </div>
+      <div class="view-controls">
+        <button id="findOptimalBtn" class="btn btn-optimal">★ Find Optimal Windows (A &amp; B)</button>
+        <button id="compareToggleBtn" class="btn btn-secondary">⇄ Toggle Side-by-Side Comparison</button>
+      </div>
+    </section>
+
+    <!-- Main Comparison Workspace -->
+    <section id="workspaceGrid" class="workspace-grid compare-active">
+      <!-- Scenario A -->
+      <article class="scenario-panel card" id="panelA">
+        <div class="panel-header">
+          <h2>Scenario A (Primary Site)</h2>
+          <select id="siteSelectA" class="site-select"></select>
+        </div>
+        <p id="siteNotesA" class="site-notes"></p>
+        <div id="optBannerA" class="opt-banner hidden"></div>
+
+        <div class="timeline-box">
+          <div class="timeline-header">
+            <span>Epoch (UTC): <strong id="timestampDisplayA">--</strong></span>
+            <span>Hour <span id="hourIndexA">0</span> / <span id="maxHourA">720</span></span>
+          </div>
+          <input type="range" id="epochSliderA" min="0" max="720" value="0" class="slider" />
+        </div>
+
+        <div class="canvas-wrapper">
+          <div class="canvas-title">360° Local Horizon Panorama (Airless LOLA Mask + Sun &amp; Earth)</div>
+          <canvas id="horizonCanvasA" width="680" height="250"></canvas>
+        </div>
+
+        <div id="metricsA" class="metrics-grid"></div>
+      </article>
+
+      <!-- Scenario B -->
+      <article class="scenario-panel card" id="panelB">
+        <div class="panel-header">
+          <h2>Scenario B (Trade-Off Comparison)</h2>
+          <select id="siteSelectB" class="site-select"></select>
+        </div>
+        <p id="siteNotesB" class="site-notes"></p>
+        <div id="optBannerB" class="opt-banner hidden"></div>
+        <div class="timeline-box">
+          <div class="timeline-header">
+            <span>Epoch (UTC): <strong id="timestampDisplayB">--</strong></span>
+            <span>Hour <span id="hourIndexB">0</span> / <span id="maxHourB">720</span></span>
+          </div>
+          <input type="range" id="epochSliderB" min="0" max="720" value="0" class="slider" />
+        </div>
+
+        <div class="canvas-wrapper">
+          <div class="canvas-title">360° Local Horizon Panorama (Airless LOLA Mask + Sun &amp; Earth)</div>
+          <canvas id="horizonCanvasB" width="680" height="250"></canvas>
+        </div>
+
+        <div id="metricsB" class="metrics-grid"></div>
+      </article>
+    </section>
+
+    <!-- Bottom Row: South Pole Map + Custom Coordinate Evaluator -->
+    <section class="bottom-grid">
+      <article class="card">
+        <h2>South Pole Stereographic Map (-84° to -90°)</h2>
+        <p class="site-notes">Live operational status of candidate sites at Scenario A timestamp.</p>
+        <div class="polar-wrapper">
+          <canvas id="polarMapCanvas" width="340" height="340"></canvas>
+          <div class="polar-legend">
+            <div><span class="dot dot-both"></span> Optimal: Solar Power + Earth DTE</div>
+            <div><span class="dot dot-sun"></span> Solar Power Only (Earth Blocked)</div>
+            <div><span class="dot dot-earth"></span> Earth DTE Only (Lunar Night / Shadow)</div>
+            <div><span class="dot dot-none"></span> Shadowed + No Direct Comms</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Custom Lunar Coordinates Evaluator</h2>
+        <p class="site-notes">Test arbitrary landing coordinates and elevation at Scenario A's selected date/time.</p>
+        <div class="custom-form">
+          <label>
+            Latitude (-90° to +90°):
+            <input type="number" id="customLat" value="-88.50" step="0.05" min="-90" max="90" />
+          </label>
+          <label>
+            East Longitude (0° to 360°):
+            <input type="number" id="customLon" value="15.00" step="0.1" min="-180" max="360" />
+          </label>
+          <label>
+            Elevation above 1737.4 km sphere (km):
+            <input type="number" id="customElev" value="2.5" step="0.1" min="-8" max="10" />
+          </label>
+          <button id="customEvalBtn" class="btn btn-primary">Evaluate Custom Site</button>
+        </div>
+        <div id="customResult" class="custom-result">
+          Enter coordinates and click <strong>Evaluate Custom Site</strong> to assess geometric horizon dip, solar elevation, and Earth DTE visibility.
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Data Sources: NASA/JPL Horizons System API, Lunar Orbiter Laser Altimeter (LOLA) / Moon Trek, LROC QuickMap, and Canadian Space Agency (CSA) Artemis Reference.
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
