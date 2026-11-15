@@ -19,20 +19,20 @@ SITES = [
         "lat": -89.78,
         "lon_360": 196.00,
         "lon_180": -164.00,
-        "elevation_km": 1.45,
+        "elevation_km": 1.34,
         # Elevación aproximada del horizonte cada 45° de acimut (0°=N, 45°=NE, ..., 315°=NO)
-        "horizon_profile_deg": [1.2, 1.8, 2.5, 1.9, 0.8, 0.5, 1.1, 1.5],
+        "horizon_profile_deg": [4.12, -0.62, -0.82, -1.38, 2.82, 21.51, 29.48, 23.39],
         "notes": "Peak of near-eternal light bordering Shackleton PSR; extreme grazing solar angles."
     },
     {
         "id": "mons-mouton",
         "name": "Mons Mouton",
         "region": "South Pole - CLPS / VIPER Target",
-        "lat": -84.95,
+        "lat": -84.60,
         "lon_360": 31.00,
         "lon_180": 31.00,
-        "elevation_km": 5.60,
-        "horizon_profile_deg": [0.2, 0.4, 0.5, 0.3, -0.4, -0.5, -0.2, 0.1],
+        "elevation_km": 5.04,
+        "horizon_profile_deg": [2.82, 3.84, 6.00, 9.66, 9.03, 2.63, 1.25, 0.80],
         "notes": "Flat-topped massif rising ~6 km above surrounding terrain; wide DTE communication window."
     },
     {
@@ -42,8 +42,8 @@ SITES = [
         "lat": -86.00,
         "lon_360": 0.00,
         "lon_180": 0.00,
-        "elevation_km": 5.00,
-        "horizon_profile_deg": [0.5, 0.8, 1.1, 0.6, -0.3, -0.4, 0.2, 0.4],
+        "elevation_km": 4.8,
+        "horizon_profile_deg": [7.24, 9.69, 5.37, -3.41, -9.10, -4.31, 1.33, 2.22],
         "notes": "Located on the 0 deg prime meridian; Earth remains persistently visible for DTE ops."
     },
     {
@@ -53,8 +53,8 @@ SITES = [
         "lat": -87.45,
         "lon_360": 354.83,
         "lon_180": -5.17,
-        "elevation_km": 1.80,
-        "horizon_profile_deg": [2.4, 3.1, 2.8, 1.6, 0.9, 1.2, 2.0, 2.7],
+        "elevation_km": -3.31,
+        "horizon_profile_deg": [9.80, 8.55, 4.42, 5.15, 8.92, 9.37, 8.62, 9.63],
         "notes": "Steep surrounding crater rims produce sharp shadow transitions and narrow DTE margins."
     },
     {
@@ -64,8 +64,8 @@ SITES = [
         "lat": -85.20,
         "lon_360": 55.00,
         "lon_180": 55.00,
-        "elevation_km": 2.10,
-        "horizon_profile_deg": [1.1, 1.4, 1.9, 1.2, 0.4, 0.3, 0.7, 1.0],
+        "elevation_km": 0.26,
+        "horizon_profile_deg": [13.52, 6.37, 0.62, 1.28, 5.08, 8.55, 14.87, 16.16],
         "notes": "Favorable landing slopes (<10 deg) with balanced solar power and Earth visibility trade-offs."
     },
     {
@@ -75,8 +75,8 @@ SITES = [
         "lat": 0.6741,
         "lon_360": 23.4730,
         "lon_180": 23.4730,
-        "elevation_km": -1.90,
-        "horizon_profile_deg": [0.3, 0.4, 0.3, 0.2, 0.3, 0.4, 0.5, 0.3],
+        "elevation_km": -1.93,
+        "horizon_profile_deg": [2.69, 0.38, -0.25, 0.91, 2.65, 1.25, 1.46, 3.06],
         "notes": "Equatorial reference: ~14.8 Earth days of high-angle sunlight followed by ~14.8 days of night."
     }
 ]
