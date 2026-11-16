@@ -1,5 +1,7 @@
 # Lunar Landing Site Navigator
 **NASA Space Apps Challenge 2026 | Team: Soft Kitty, Warm Kitty**
+**Live Demo:** https://ricardom1618-source.github.io/lunar_landing_site_navigator/
+**Presentation Deck (PDF):** [Lunar_Landing_Site_Navigator_Presentation.pdf](./Lunar_Landing_Site_Navigator_Presentation.pdf)
 
 An interactive mission-planning web application that evaluates **solar illumination (power generation)** and **Direct-to-Earth (DTE) line-of-sight communications** across candidate landing sites at the Lunar South Pole and an equatorial Apollo baseline.
 
