@@ -51,7 +51,7 @@ lunar-landing-site-navigator/
 │   ├── Shackleton Crater Rim/        # 8-azimuth LOLA DEM workbooks (0° to 315°, 3D geodetic ENU)
 │   └── my-features.csv               # Exported LROC QuickMap transect geometries & coordinates
 └── README.md                         # Project documentation
-
+```
 
 ## AI Disclosure
 In accordance with NASA Space Apps Challenge guidelines, generative AI tools were used as a collaborative coding and engineering assistant to structure the JavaScript horizon interpolation module, debug API query formatting for JPL Horizons, and refine UI layout. All astronomical ephemerides and topographic elevation profiles are sourced directly from NASA/JPL Horizons and NASA LRO/LOLA via LROC QuickMap.
